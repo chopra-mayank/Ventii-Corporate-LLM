@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Event Planner - AI-Powered Itinerary Generator</title>
+    <meta name="description" content="Generate comprehensive corporate event plans from simple text descriptions using AI">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎯 Corporate Event Planner</h1>
+                <p>Transform your event ideas into comprehensive plans with AI</p>
+                <div class="features">
+                    <span class="feature">⚡ 30-second generation</span>
+                    <span class="feature">🎨 Natural language input</span>
+                    <span class="feature">📋 Complete itineraries</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section" id="inputSection">
+            <div class="input-container">
+                <div class="form-group">
+                    <label for="eventInput">Describe your corporate event:</label>
+                    <textarea 
+                        id="eventInput" 
+                        placeholder="e.g., Corporate training for 50 people in Bangalore on June 10th. Budget ₹1.5 lakhs."
+                        rows="4"
+                    ></textarea>
+                    
+                    <div class="input-help">
+                        <small>💡 Include: event type, number of people, location, date, and budget</small>
+                    </div>
+                </div>
+
+                <div class="examples-section">
+                    <h3>📝 Quick Examples</h3>
+                    <div class="examples-grid">
+                        <div class="example-category">
+                            <h4>Training</h4>
+                            <div class="example-tags">
+                                <span class="example-tag" onclick="setExample(0)">50 people • Bangalore</span>
+                                <span class="example-tag" onclick="setExample(1)">40 people • Pune</span>
+                            </div>
+                        </div>
+                        <div class="example-category">
+                            <h4>Offsite</h4>
+                            <div class="example-tags">
+                                <span class="example-tag" onclick="setExample(2)">30 people • Goa</span>
+                                <span class="example-tag" onclick="setExample(3)">20 people • Chennai</span>
+                            </div>
+                        </div>
+                        <div class="example-category">
+                            <h4>Conference</h4>
+                            <div class="example-tags">
+                                <span class="example-tag" onclick="setExample(4)">100 people • Delhi</span>
+                                <span class="example-tag" onclick="setExample(5)">75 people • Mumbai</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generatePlan()" id="generateBtn">
+                    <span class="btn-icon">🚀</span>
+                    Generate Event Plan
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section class="loading" id="loading">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h3>Generating your event plan...</h3>
+                <p>This usually takes 15-30 seconds</p>
+                <div class="loading-steps">
+                    <div class="step active" id="step1">📝 Parsing your requirements</div>
+                    <div class="step" id="step2">🎯 Creating comprehensive plan</div>
+                    <div class="step" id="step3">🏢 Finding venue suggestions</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="result-section" id="resultSection">
+            <div class="result-header">
+                <h2>📋 Your Event Plan</h2>
+                <div class="result-meta">
+                    <span class="generation-time" id="generationTime"></span>
+                    <button class="share-btn" onclick="sharePlan()">📤 Share</button>
+                </div>
+            </div>
+            
+            <div class="result-content">
+                <div class="event-plan-container">
+                    <div class="plan-controls">
+                        <button class="control-btn" onclick="downloadPlan()">📥 Download</button>
+                        <button class="control-btn" onclick="printPlan()">🖨️ Print</button>
+                        <button class="control-btn" onclick="copyPlan()">📋 Copy</button>
+                    </div>
+                    <div class="event-plan" id="eventPlan"></div>
+                </div>
+                
+                <div class="venues-section" id="venuesSection">
+                    <h3>🏢 Recommended Venues</h3>
+                    <div class="venues-grid" id="venuesList"></div>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button class="secondary-btn" onclick="newPlan()">Create New Plan</button>
+                <button class="primary-btn" onclick="refineRequirements()">Refine Requirements</button>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <section class="error-section" id="errorSection">
+            <div class="error-content">
+                <div class="error-icon">❌</div>
+                <h3>Something went wrong</h3>
+                <p id="errorMessage">An unexpected error occurred</p>
+                <div class="error-actions">
+                    <button class="secondary-btn" onclick="newPlan()">Try Again</button>
+                    <button class="link-btn" onclick="showExamples()">View Examples</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Corporate Event Planner. Powered by AI.</p>
+            <div class="footer-links">
+                <a href="#" onclick="showApiDocs()">API Docs</a>
+                <a href="#" onclick="showAbout()">About</a>
+                <a href="#" onclick="contactSupport()">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
